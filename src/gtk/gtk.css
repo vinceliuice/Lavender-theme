@@ -1602,7 +1602,7 @@ headerbar .linked:not(.vertical):not(.path-bar).stack-switcher > button.text-but
 .titlebar:not(headerbar) .linked:not(.vertical).path-bar > button:only-child, .titlebar:not(headerbar) .linked:not(.vertical):not(.path-bar).stack-switcher > button:only-child,
 headerbar .linked:not(.vertical).path-bar > button:only-child,
 headerbar .linked:not(.vertical):not(.path-bar).stack-switcher > button:only-child {
-  border-radius: 6px;
+  border-radius: 100px;
 }
 
 .titlebar:not(headerbar) .linked:not(.vertical).path-bar > button:first-child, .titlebar:not(headerbar) .linked:not(.vertical):not(.path-bar).stack-switcher > button:first-child,
@@ -1640,7 +1640,7 @@ headerbar,
 .fullscreen
 headerbar {
   border-radius: 0;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 3px 3px -3px rgba(0, 0, 0, 0.12), 0 5px 5px -5px rgba(0, 0, 0, 0.06);
 }
 
 .default-decoration.titlebar:not(headerbar),
@@ -1674,13 +1674,6 @@ headerbar.default-decoration button.titlebutton:active {
   background-size: 1000% 1000%;
 }
 
-.solid-csd .titlebar:dir(rtl):not(headerbar), .solid-csd .titlebar:dir(ltr):not(headerbar), .solid-csd
-headerbar:dir(rtl), .solid-csd
-headerbar:dir(ltr) {
-  border-radius: 0;
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);
-}
-
 headerbar entry,
 headerbar spinbutton,
 headerbar button {
@@ -1702,7 +1695,6 @@ headerbar spinbutton button {
 .titlebar .background {
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
-  background-color: #455A64;
 }
 
 .background.tiled .titlebar,
@@ -1775,7 +1767,7 @@ window.csd > .titlebar:not(headerbar) {
   padding: 0;
   background-color: transparent;
   background-image: none;
-  border-style: none;
+  border: none;
   box-shadow: none;
 }
 
@@ -4666,8 +4658,7 @@ filechooser placessidebar.sidebar row.sidebar-row:selected:hover,
 }
 
 .gedit-document-panel row button.flat {
-  margin-top: 8px;
-  margin-bottom: 8px;
+  margin: 8px;
 }
 
 .gedit-document-panel-group-row:not(:first-child) {
@@ -4749,10 +4740,6 @@ frame.gedit-map-frame > border:dir(rtl) {
   border-style: none solid none none;
 }
 
-.gedit-panel-paned notebook > header.top {
-  box-shadow: inset 0 -1px rgba(0, 0, 0, 0.08);
-}
-
 paned.titlebar.horizontal headerbar {
   box-shadow: inset 0 -1px rgba(0, 0, 0, 0.08);
 }
@@ -4779,6 +4766,10 @@ paned.titlebar.horizontal headerbar {
   margin: 2px 6px 6px;
   border-radius: 6px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+
+.gedit-side-panel-paned.horizontal > box.vertical > stack > grid.horizontal > scrolledwindow row.activatable, .gedit-side-panel-paned.horizontal > box.vertical > stack > grid.horizontal > scrolledwindow .view, .gedit-side-panel-paned.horizontal > box.vertical > stack > grid.horizontal > scrolledwindow treeview.view header button, treeview.view header .gedit-side-panel-paned.horizontal > box.vertical > stack > grid.horizontal > scrolledwindow button, .gedit-side-panel-paned.horizontal > box.vertical > stack > grid.horizontal > scrolledwindow .budgie-menu button, .budgie-menu .gedit-side-panel-paned.horizontal > box.vertical > stack > grid.horizontal > scrolledwindow button {
+  padding: 3px;
 }
 
 /**************
