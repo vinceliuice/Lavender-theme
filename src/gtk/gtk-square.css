@@ -1224,24 +1224,24 @@ headerbar {
   transition: background-color 180ms cubic-bezier(0, 0, 0.2, 1), color 270ms cubic-bezier(0, 0, 0.2, 1);
   min-height: 48px;
   padding: 0 6px;
-  box-shadow: 0 3px 3px -3px rgba(0, 0, 0, 0.12), 0 5px 5px -5px rgba(0, 0, 0, 0.06), inset 0 1px rgba(255, 255, 255, 0.4);
-  background-color: #FFFFFF;
-  color: rgba(0, 0, 0, 0.75);
+  box-shadow: 0 3px 3px -3px rgba(0, 0, 0, 0.12), 0 5px 5px -5px rgba(0, 0, 0, 0.06), inset 0 1px rgba(255, 255, 255, 0.1);
+  background-color: #455A64;
+  color: #FFFFFF;
 }
 
 .titlebar:disabled:not(headerbar) :not(button) > label,
 headerbar:disabled :not(button) > label {
-  color: rgba(0, 0, 0, 0.38);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .titlebar:backdrop:not(headerbar),
 headerbar:backdrop {
-  color: rgba(0, 0, 0, 0.54);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .titlebar:backdrop:disabled:not(headerbar) :not(button) > label,
 headerbar:backdrop:disabled :not(button) > label {
-  color: rgba(0, 0, 0, 0.26);
+  color: rgba(255, 255, 255, 0.3);
 }
 
 .titlebar:not(headerbar) .title,
@@ -1264,18 +1264,18 @@ headerbar .linked:not(.vertical) > entry:not(.flat) {
 .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action),
 headerbar button:not(.suggested-action):not(.destructive-action) {
   border-image: none;
-  color: rgba(0, 0, 0, 0.54);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):hover, .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):active,
 headerbar button:not(.suggested-action):not(.destructive-action):hover,
 headerbar button:not(.suggested-action):not(.destructive-action):active {
-  color: rgba(0, 0, 0, 0.75);
+  color: #FFFFFF;
 }
 
 .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):disabled,
 headerbar button:not(.suggested-action):not(.destructive-action):disabled {
-  color: rgba(0, 0, 0, 0.26);
+  color: rgba(255, 255, 255, 0.3);
 }
 
 .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):checked,
@@ -1293,18 +1293,18 @@ headerbar button:not(.suggested-action):not(.destructive-action):checked:disable
 
 .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):backdrop,
 headerbar button:not(.suggested-action):not(.destructive-action):backdrop {
-  color: rgba(0, 0, 0, 0.38);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):backdrop:hover, .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):backdrop:active,
 headerbar button:not(.suggested-action):not(.destructive-action):backdrop:hover,
 headerbar button:not(.suggested-action):not(.destructive-action):backdrop:active {
-  color: rgba(0, 0, 0, 0.54);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):backdrop:disabled,
 headerbar button:not(.suggested-action):not(.destructive-action):backdrop:disabled {
-  color: rgba(0, 0, 0, 0.26);
+  color: rgba(255, 255, 255, 0.3);
 }
 
 .titlebar:not(headerbar) button:not(.suggested-action):not(.destructive-action):backdrop:checked,
@@ -1320,8 +1320,8 @@ headerbar button:not(.suggested-action):not(.destructive-action):backdrop:checke
 .titlebar:not(headerbar) button.suggested-action:disabled, .titlebar:not(headerbar) button.destructive-action:disabled,
 headerbar button.suggested-action:disabled,
 headerbar button.destructive-action:disabled {
-  background-color: rgba(0, 0, 0, 0.12);
-  color: rgba(0, 0, 0, 0.38);
+  background-color: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .selection-mode.titlebar:not(headerbar),
@@ -1478,13 +1478,13 @@ headerbar .linked:not(.vertical):not(.path-bar).stack-switcher > button:checked,
 headerbar .linked:not(.vertical):not(.path-bar).stack-switcher > button.text-button:checked,
 headerbar .linked:not(.vertical):not(.path-bar).stack-switcher > button.image-button:checked,
 headerbar .linked:not(.vertical):not(.path-bar).stack-switcher > button.text-button.image-button:checked {
-  border-image-source: -gtk-scaled(url("assets/button-checked-circle.png"), url("assets/button-checked-circle@2.png"));
+  border-image-source: -gtk-scaled(url("assets/button-checked-square.png"), url("assets/button-checked-square@2.png"));
   border-image-width: 8px 16px 8px 16px;
   border-image-slice: 8 16 8 16;
   border-image-repeat: stretch;
   transition: all 270ms cubic-bezier(0, 0, 0.2, 1), background-size 0, border-image 0;
-  color: rgba(0, 0, 0, 0.54);
-  background-color: #FFFFFF;
+  color: rgba(255, 255, 255, 0.7);
+  background-color: #455A64;
 }
 
 .titlebar:not(headerbar) .linked:not(.vertical).path-bar > button:checked:hover, .titlebar:not(headerbar) .linked:not(.vertical).path-bar > button.text-button:checked:hover, .titlebar:not(headerbar) .linked:not(.vertical).path-bar > button.image-button:checked:hover, .titlebar:not(headerbar) .linked:not(.vertical).path-bar > button.text-button.image-button:checked:hover,
@@ -1500,7 +1500,7 @@ headerbar .linked:not(.vertical):not(.path-bar).stack-switcher > button:checked:
 headerbar .linked:not(.vertical):not(.path-bar).stack-switcher > button.text-button:checked:hover,
 headerbar .linked:not(.vertical):not(.path-bar).stack-switcher > button.image-button:checked:hover,
 headerbar .linked:not(.vertical):not(.path-bar).stack-switcher > button.text-button.image-button:checked:hover {
-  color: rgba(0, 0, 0, 0.75);
+  color: #FFFFFF;
 }
 
 .titlebar:not(headerbar) .linked:not(.vertical).path-bar > button:checked:disabled, .titlebar:not(headerbar) .linked:not(.vertical).path-bar > button.text-button:checked:disabled, .titlebar:not(headerbar) .linked:not(.vertical).path-bar > button.image-button:checked:disabled, .titlebar:not(headerbar) .linked:not(.vertical).path-bar > button.text-button.image-button:checked:disabled,
@@ -1516,7 +1516,7 @@ headerbar .linked:not(.vertical):not(.path-bar).stack-switcher > button:checked:
 headerbar .linked:not(.vertical):not(.path-bar).stack-switcher > button.text-button:checked:disabled,
 headerbar .linked:not(.vertical):not(.path-bar).stack-switcher > button.image-button:checked:disabled,
 headerbar .linked:not(.vertical):not(.path-bar).stack-switcher > button.text-button.image-button:checked:disabled {
-  color: rgba(0, 0, 0, 0.38);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .titlebar:not(headerbar) .linked:not(.vertical).path-bar > button:first-child:checked, .titlebar:not(headerbar) .linked:not(.vertical).path-bar > button.text-button:first-child:checked, .titlebar:not(headerbar) .linked:not(.vertical).path-bar > button.image-button:first-child:checked, .titlebar:not(headerbar) .linked:not(.vertical).path-bar > button.text-button.image-button:first-child:checked,
@@ -1532,7 +1532,7 @@ headerbar .linked:not(.vertical):not(.path-bar).stack-switcher > button:first-ch
 headerbar .linked:not(.vertical):not(.path-bar).stack-switcher > button.text-button:first-child:checked,
 headerbar .linked:not(.vertical):not(.path-bar).stack-switcher > button.image-button:first-child:checked,
 headerbar .linked:not(.vertical):not(.path-bar).stack-switcher > button.text-button.image-button:first-child:checked {
-  border-image-source: -gtk-scaled(url("assets/firstbutton-checked-circle.png"), url("assets/firstbutton-checked-circle@2.png"));
+  border-image-source: -gtk-scaled(url("assets/firstbutton-checked-square.png"), url("assets/firstbutton-checked-square@2.png"));
 }
 
 .titlebar:not(headerbar) .linked:not(.vertical).path-bar > button:last-child:checked, .titlebar:not(headerbar) .linked:not(.vertical).path-bar > button.text-button:last-child:checked, .titlebar:not(headerbar) .linked:not(.vertical).path-bar > button.image-button:last-child:checked, .titlebar:not(headerbar) .linked:not(.vertical).path-bar > button.text-button.image-button:last-child:checked,
@@ -1548,7 +1548,7 @@ headerbar .linked:not(.vertical):not(.path-bar).stack-switcher > button:last-chi
 headerbar .linked:not(.vertical):not(.path-bar).stack-switcher > button.text-button:last-child:checked,
 headerbar .linked:not(.vertical):not(.path-bar).stack-switcher > button.image-button:last-child:checked,
 headerbar .linked:not(.vertical):not(.path-bar).stack-switcher > button.text-button.image-button:last-child:checked {
-  border-image-source: -gtk-scaled(url("assets/lastbutton-checked-circle.png"), url("assets/lastbutton-checked-circle@2.png"));
+  border-image-source: -gtk-scaled(url("assets/lastbutton-checked-square.png"), url("assets/lastbutton-checked-square@2.png"));
 }
 
 .titlebar:not(headerbar) .linked:not(.vertical).path-bar > button:disabled, .titlebar:not(headerbar) .linked:not(.vertical).path-bar > button.text-button:disabled, .titlebar:not(headerbar) .linked:not(.vertical).path-bar > button.image-button:disabled, .titlebar:not(headerbar) .linked:not(.vertical).path-bar > button.text-button.image-button:disabled,
@@ -1612,7 +1612,7 @@ headerbar .linked:not(.vertical):not(.path-bar).stack-switcher > button:backdrop
 headerbar .linked:not(.vertical):not(.path-bar).stack-switcher > button.text-button:backdrop:checked,
 headerbar .linked:not(.vertical):not(.path-bar).stack-switcher > button.image-button:backdrop:checked,
 headerbar .linked:not(.vertical):not(.path-bar).stack-switcher > button.text-button.image-button:backdrop:checked {
-  color: rgba(0, 0, 0, 0.38);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .titlebar:not(headerbar) .linked:not(.vertical).path-bar > button:backdrop:checked:disabled, .titlebar:not(headerbar) .linked:not(.vertical).path-bar > button.text-button:backdrop:checked:disabled, .titlebar:not(headerbar) .linked:not(.vertical).path-bar > button.image-button:backdrop:checked:disabled, .titlebar:not(headerbar) .linked:not(.vertical).path-bar > button.text-button.image-button:backdrop:checked:disabled,
@@ -1628,21 +1628,21 @@ headerbar .linked:not(.vertical):not(.path-bar).stack-switcher > button:backdrop
 headerbar .linked:not(.vertical):not(.path-bar).stack-switcher > button.text-button:backdrop:checked:disabled,
 headerbar .linked:not(.vertical):not(.path-bar).stack-switcher > button.image-button:backdrop:checked:disabled,
 headerbar .linked:not(.vertical):not(.path-bar).stack-switcher > button.text-button.image-button:backdrop:checked:disabled {
-  color: rgba(0, 0, 0, 0.26);
+  color: rgba(255, 255, 255, 0.3);
 }
 
 .titlebar:not(headerbar) .linked:not(.vertical).path-bar > button:only-child,
 .titlebar:not(headerbar) .linked:not(.vertical):not(.path-bar).stack-switcher > button:only-child,
 headerbar .linked:not(.vertical).path-bar > button:only-child,
 headerbar .linked:not(.vertical):not(.path-bar).stack-switcher > button:only-child {
-  border-radius: 9999px;
+  border-radius: 8px;
 }
 
 .titlebar:not(headerbar) .linked:not(.vertical).path-bar > button:first-child,
 .titlebar:not(headerbar) .linked:not(.vertical):not(.path-bar).stack-switcher > button:first-child,
 headerbar .linked:not(.vertical).path-bar > button:first-child,
 headerbar .linked:not(.vertical):not(.path-bar).stack-switcher > button:first-child {
-  border-radius: 9999px 0 0 9999px;
+  border-radius: 8px 0 0 8px;
   padding-left: 8px;
 }
 
@@ -1650,7 +1650,7 @@ headerbar .linked:not(.vertical):not(.path-bar).stack-switcher > button:first-ch
 .titlebar:not(headerbar) .linked:not(.vertical):not(.path-bar).stack-switcher > button:last-child,
 headerbar .linked:not(.vertical).path-bar > button:last-child,
 headerbar .linked:not(.vertical):not(.path-bar).stack-switcher > button:last-child {
-  border-radius: 0 9999px 9999px 0;
+  border-radius: 0 8px 8px 0;
   padding-right: 8px;
 }
 
@@ -1682,7 +1682,7 @@ headerbar {
 headerbar.default-decoration {
   min-height: 24px;
   padding: 6px 12px;
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.4);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);
 }
 
 .tiled .default-decoration.titlebar:not(headerbar),
@@ -1807,7 +1807,7 @@ window.csd > .titlebar:not(headerbar) {
 }
 
 .titlebar:not(headerbar) > separator {
-  background-color: #FFFFFF;
+  background-color: #455A64;
 }
 
 /************
@@ -1997,7 +1997,7 @@ menubar,
 .menubar {
   -GtkWidget-window-dragging: true;
   padding: 0;
-  background-color: #FFFFFF;
+  background-color: #455A64;
 }
 
 menubar > menuitem,
@@ -2005,18 +2005,18 @@ menubar > menuitem,
   transition: all 180ms cubic-bezier(0, 0, 0.2, 1);
   min-height: 20px;
   padding: 4px 8px;
-  color: rgba(0, 0, 0, 0.54);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 menubar > menuitem:hover,
 .menubar > menuitem:hover {
-  color: rgba(0, 0, 0, 0.75);
+  color: #FFFFFF;
   box-shadow: inset 0 -3px #7043ea;
 }
 
 menubar > menuitem:disabled,
 .menubar > menuitem:disabled {
-  color: rgba(0, 0, 0, 0.26);
+  color: rgba(255, 255, 255, 0.3);
 }
 
 menubar > menuitem label:disabled,
@@ -4024,7 +4024,7 @@ messagedialog.csd decoration {
   margin: 0;
   border-radius: 0;
   box-shadow: none;
-  background-color: #FFFFFF;
+  background-color: #455A64;
 }
 
 /*****************
@@ -4065,7 +4065,7 @@ headerbar button.titlebutton.close, headerbar button.titlebutton.maximize, heade
   padding: 0;
   margin: 0 2px;
   color: transparent;
-  background-color: rgba(0, 0, 0, 0.26);
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 headerbar button.titlebutton.close:hover, headerbar button.titlebutton.close:backdrop:hover, headerbar button.titlebutton.maximize:hover, headerbar button.titlebutton.maximize:backdrop:hover, headerbar button.titlebutton.minimize:hover, headerbar button.titlebutton.minimize:backdrop:hover, headerbar button.titlebutton.restore:hover, headerbar button.titlebutton.restore:backdrop:hover, .csd headerbar button.titlebutton.close:hover, .csd headerbar button.titlebutton.close:backdrop:hover, .csd headerbar button.titlebutton.maximize:hover, .csd headerbar button.titlebutton.maximize:backdrop:hover, .csd headerbar button.titlebutton.minimize:hover, .csd headerbar button.titlebutton.minimize:backdrop:hover, .csd headerbar button.titlebutton.restore:hover, .csd headerbar button.titlebutton.restore:backdrop:hover, headerbar.default-decoration button.titlebutton.close:hover, headerbar.default-decoration button.titlebutton.close:backdrop:hover, headerbar.default-decoration button.titlebutton.maximize:hover, headerbar.default-decoration button.titlebutton.maximize:backdrop:hover, headerbar.default-decoration button.titlebutton.minimize:hover, headerbar.default-decoration button.titlebutton.minimize:backdrop:hover, headerbar.default-decoration button.titlebutton.restore:hover, headerbar.default-decoration button.titlebutton.restore:backdrop:hover,
@@ -4117,7 +4117,7 @@ headerbar button.titlebutton.close:hover, headerbar button.titlebutton.close:bac
 .titlebar.default-decoration button.titlebutton.restore:hover,
 .csd
 .titlebar.default-decoration button.titlebutton.restore:backdrop:hover {
-  color: rgba(0, 0, 0, 0.54);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 headerbar button.titlebutton.close:active, headerbar button.titlebutton.close:checked, headerbar button.titlebutton.close:backdrop:active, headerbar button.titlebutton.close:backdrop:checked, headerbar button.titlebutton.maximize:active, headerbar button.titlebutton.maximize:checked, headerbar button.titlebutton.maximize:backdrop:active, headerbar button.titlebutton.maximize:backdrop:checked, headerbar button.titlebutton.minimize:active, headerbar button.titlebutton.minimize:checked, headerbar button.titlebutton.minimize:backdrop:active, headerbar button.titlebutton.minimize:backdrop:checked, headerbar button.titlebutton.restore:active, headerbar button.titlebutton.restore:checked, headerbar button.titlebutton.restore:backdrop:active, headerbar button.titlebutton.restore:backdrop:checked, .csd headerbar button.titlebutton.close:active, .csd headerbar button.titlebutton.close:checked, .csd headerbar button.titlebutton.close:backdrop:active, .csd headerbar button.titlebutton.close:backdrop:checked, .csd headerbar button.titlebutton.maximize:active, .csd headerbar button.titlebutton.maximize:checked, .csd headerbar button.titlebutton.maximize:backdrop:active, .csd headerbar button.titlebutton.maximize:backdrop:checked, .csd headerbar button.titlebutton.minimize:active, .csd headerbar button.titlebutton.minimize:checked, .csd headerbar button.titlebutton.minimize:backdrop:active, .csd headerbar button.titlebutton.minimize:backdrop:checked, .csd headerbar button.titlebutton.restore:active, .csd headerbar button.titlebutton.restore:checked, .csd headerbar button.titlebutton.restore:backdrop:active, .csd headerbar button.titlebutton.restore:backdrop:checked, headerbar.default-decoration button.titlebutton.close:active, headerbar.default-decoration button.titlebutton.close:checked, headerbar.default-decoration button.titlebutton.close:backdrop:active, headerbar.default-decoration button.titlebutton.close:backdrop:checked, headerbar.default-decoration button.titlebutton.maximize:active, headerbar.default-decoration button.titlebutton.maximize:checked, headerbar.default-decoration button.titlebutton.maximize:backdrop:active, headerbar.default-decoration button.titlebutton.maximize:backdrop:checked, headerbar.default-decoration button.titlebutton.minimize:active, headerbar.default-decoration button.titlebutton.minimize:checked, headerbar.default-decoration button.titlebutton.minimize:backdrop:active, headerbar.default-decoration button.titlebutton.minimize:backdrop:checked, headerbar.default-decoration button.titlebutton.restore:active, headerbar.default-decoration button.titlebutton.restore:checked, headerbar.default-decoration button.titlebutton.restore:backdrop:active, headerbar.default-decoration button.titlebutton.restore:backdrop:checked,
@@ -4217,7 +4217,7 @@ headerbar button.titlebutton.close:active, headerbar button.titlebutton.close:ch
 .titlebar.default-decoration button.titlebutton.restore:backdrop:active,
 .csd
 .titlebar.default-decoration button.titlebutton.restore:backdrop:checked {
-  color: rgba(0, 0, 0, 0.75);
+  color: #FFFFFF;
 }
 
 headerbar button.titlebutton.close:backdrop, headerbar button.titlebutton.maximize:backdrop, headerbar button.titlebutton.minimize:backdrop, headerbar button.titlebutton.restore:backdrop, .csd headerbar button.titlebutton.close:backdrop, .csd headerbar button.titlebutton.maximize:backdrop, .csd headerbar button.titlebutton.minimize:backdrop, .csd headerbar button.titlebutton.restore:backdrop, headerbar.default-decoration button.titlebutton.close:backdrop, headerbar.default-decoration button.titlebutton.maximize:backdrop, headerbar.default-decoration button.titlebutton.minimize:backdrop, headerbar.default-decoration button.titlebutton.restore:backdrop,
@@ -4246,7 +4246,7 @@ headerbar button.titlebutton.close:backdrop, headerbar button.titlebutton.maximi
 .csd
 .titlebar.default-decoration button.titlebutton.restore:backdrop {
   color: transparent;
-  background-color: rgba(0, 0, 0, 0.38);
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 headerbar button.titlebutton.close, .csd headerbar button.titlebutton.close, headerbar.default-decoration button.titlebutton.close,
@@ -4449,7 +4449,7 @@ button.emoji-section:last-child {
 }
 
 .nautilus-window headerbar {
-  background-image: -gtk-scaled(url("assets/background-img-top.png"), url("assets/background-img-top@2.png"));
+  background-image: -gtk-scaled(url("assets/background-img-top-dark.png"), url("assets/background-img-top-dark@2.png"));
   background-repeat: no-repeat;
   background-position: bottom right;
 }
@@ -5615,15 +5615,15 @@ window.background:not(.csd) > menu > menu {
 }
 
 window.background:not(.csd) > widget > menubar {
-  color: rgba(0, 0, 0, 0.54);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 window.background:not(.csd) > widget > menubar:hover {
-  color: rgba(0, 0, 0, 0.75);
+  color: #FFFFFF;
 }
 
 window.background:not(.csd) > widget > menubar:disabled {
-  color: rgba(0, 0, 0, 0.26);
+  color: rgba(255, 255, 255, 0.3);
 }
 
 window.background:not(.csd) > widget > frame {
@@ -5826,23 +5826,23 @@ UnityDecoration .top {
   padding: 0 2px;
   border-style: none;
   border-radius: 8px 8px 0 0;
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.4);
-  background-color: #FFFFFF;
-  color: rgba(0, 0, 0, 0.75);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);
+  background-color: #455A64;
+  color: #FFFFFF;
 }
 
 UnityDecoration .top:backdrop {
-  color: rgba(0, 0, 0, 0.54);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 UnityDecoration .menuitem {
-  color: rgba(0, 0, 0, 0.54);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 UnityDecoration .menuitem:hover {
-  box-shadow: inset 0 -2px #7043ea;
+  box-shadow: inset 0 -2px currentColor;
   background-color: transparent;
-  color: rgba(0, 0, 0, 0.75);
+  color: #FFFFFF;
 }
 
 .background:not(.csd) headerbar:not(.titlebar) {
@@ -5856,25 +5856,25 @@ UnityDecoration .menuitem:hover {
 
 UnityPanelWidget,
 .unity-panel {
-  background-color: #cfcfcf;
-  color: rgba(0, 0, 0, 0.75);
+  background-color: #263238;
+  color: #FFFFFF;
 }
 
 UnityPanelWidget:backdrop,
 .unity-panel:backdrop {
-  color: rgba(0, 0, 0, 0.54);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .unity-panel.menuitem,
 .unity-panel .menuitem {
-  color: rgba(0, 0, 0, 0.54);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .unity-panel.menubar.menuitem:hover,
 .unity-panel.menubar .menuitem *:hover {
-  box-shadow: inset 0 -2px #7043ea;
+  box-shadow: inset 0 -2px currentColor;
   background-color: transparent;
-  color: rgba(0, 0, 0, 0.75);
+  color: #FFFFFF;
 }
 
 .menu IdoPlaybackMenuItem.menuitem:active {
@@ -5892,12 +5892,12 @@ UnityPanelWidget:backdrop,
 }
 
 .mate-panel-menu-bar {
-  background-color: rgba(255, 255, 255, 0.75);
+  background-color: #263238;
   font-weight: 500;
 }
 
 .mate-panel-menu-bar:not(.popup) {
-  color: rgba(0, 0, 0, 0.54);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .mate-panel-menu-bar button {
@@ -5933,16 +5933,16 @@ MatePanelAppletFrameDBus {
 }
 
 .mate-panel-menu-bar menubar > menuitem {
-  color: rgba(0, 0, 0, 0.54);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .mate-panel-menu-bar menubar > menuitem:hover {
   background-color: rgba(0, 0, 0, 0.12);
-  color: rgba(0, 0, 0, 0.75);
+  color: #FFFFFF;
 }
 
 .mate-panel-menu-bar menubar > menuitem:disabled {
-  color: rgba(0, 0, 0, 0.38);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .mate-panel-menu-bar.horizontal menubar > menuitem {
@@ -6499,13 +6499,13 @@ popover.background.places-menu row {
 
 .budgie-panel {
   transition: background-color 270ms cubic-bezier(0, 0, 0.2, 1);
-  background-color: rgba(255, 255, 255, 0.75);
+  background-color: #263238;
   color: rgba(255, 255, 255, 0.7);
   font-weight: 500;
 }
 
 .budgie-panel.transparent {
-  background-color: rgba(255, 255, 255, 0.75);
+  background-color: rgba(69, 90, 100, 0.75);
 }
 
 .budgie-panel button {
@@ -6832,7 +6832,7 @@ calendar.raven-calendar:selected {
  * LightDM GTK+ Greeter *
  ************************/
 #panel_window {
-  background-color: rgba(224, 224, 224, 0.75);
+  background-color: rgba(84, 110, 122, 0.75);
   color: #FFFFFF;
 }
 
