@@ -1444,7 +1444,7 @@ headerbar .linked:not(.vertical):not(.path-bar).stack-switcher > button.text-but
   transition: none;
   box-shadow: none;
   outline-offset: -6px;
-  -gtk-outline-radius: 100px;
+  -gtk-outline-radius: 9997px;
 }
 
 .titlebar:not(headerbar) .linked:not(.vertical).path-bar > button:hover, .titlebar:not(headerbar) .linked:not(.vertical).path-bar > button.text-button:hover, .titlebar:not(headerbar) .linked:not(.vertical).path-bar > button.image-button:hover, .titlebar:not(headerbar) .linked:not(.vertical).path-bar > button.text-button.image-button:hover,
