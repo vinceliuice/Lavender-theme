@@ -11,16 +11,16 @@
 .nautilus-window notebook > stack {
   background-color: $base_color;
   border-bottom-right-radius: $windows_radius + 2px;
-  background-image: -gtk-scaled(url("assets/background-img-bottom#{$asset_suffix}.png"),
-                                url("assets/background-img-bottom#{$asset_suffix}@2.png"));
+  background-image: -gtk-scaled(url("assets/background-img-bottom#{$asset_suffix}#{$asset_color}.png"),
+                                url("assets/background-img-bottom#{$asset_suffix}#{$asset_color}@2.png"));
   background-repeat: no-repeat;
   background-position: top right;
 }
 
 // Set nautilus background pictures
 .nautilus-window headerbar {
-  background-image: -gtk-scaled(url("assets/background-img-top#{$asset_suffix_light}.png"),
-                                url("assets/background-img-top#{$asset_suffix_light}@2.png"));
+  background-image: -gtk-scaled(url("assets/background-img-top#{$asset_suffix_light}#{$asset_color}.png"),
+                                url("assets/background-img-top#{$asset_suffix_light}#{$asset_color}@2.png"));
   background-repeat: no-repeat;
   background-position: bottom right;
 }

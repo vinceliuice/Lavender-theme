@@ -12,4 +12,5 @@ _parallel() {
 }
 
 cat $INDEX | _parallel ./render-asset-dark.sh
+cat $INDEX | _parallel ./render-asset-dark-azul.sh
 exit 0

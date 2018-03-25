@@ -18,6 +18,7 @@ THEME_NAME=Lavender
 COLOR_VARIANTS=('' '-dark' '-light')
 SIZE_VARIANTS=('' '-compact')
 RADIUS_VARIANTS=('' '-square')
+THEME_VARIANTS=('' '-azul')
 
 usage() {
   printf "%s\n" "Usage: $0 [OPTIONS...]"
@@ -42,11 +43,12 @@ install() {
   local color=${3}
   local size=${4}
   local radius=${5}
+  local theme=${6}
 
   [[ ${color} == '-dark' ]] && local ELSE_DARK=${color}
   [[ ${color} == '-light' ]] && local ELSE_LIGHT=${color}
 
-  local THEME_DIR=${DEST_DIR}/${name}${color}${size}${radius}
+  local THEME_DIR=${DEST_DIR}/${name}${color}${size}${radius}${theme}
 
   [[ -d ${THEME_DIR} ]] && rm -rf ${THEME_DIR}
 
@@ -58,13 +60,13 @@ install() {
 
   echo "[Desktop Entry]" >> ${THEME_DIR}/index.theme
   echo "Type=X-GNOME-Metatheme" >> ${THEME_DIR}/index.theme
-  echo "Name=Lavender${color}${size}${radius}" >> ${THEME_DIR}/index.theme
+  echo "Name=Lavender${color}${size}${radius}${theme}" >> ${THEME_DIR}/index.theme
   echo "Comment=An Flat Gtk+ theme based on Material Design" >> ${THEME_DIR}/index.theme
   echo "Encoding=UTF-8" >> ${THEME_DIR}/index.theme
   echo "" >> ${THEME_DIR}/index.theme
   echo "[X-GNOME-Metatheme]" >> ${THEME_DIR}/index.theme
-  echo "GtkTheme=Lavender${color}${size}${radius}" >> ${THEME_DIR}/index.theme
-  echo "MetacityTheme=Lavender${color}${size}${radius}" >> ${THEME_DIR}/index.theme
+  echo "GtkTheme=Lavender${color}${size}${radius}${theme}" >> ${THEME_DIR}/index.theme
+  echo "MetacityTheme=Lavender${color}${size}${radius}${theme}" >> ${THEME_DIR}/index.theme
   echo "IconTheme=Adwaita" >> ${THEME_DIR}/index.theme
   echo "CursorTheme=Adwaita" >> ${THEME_DIR}/index.theme
   echo "ButtonLayout=menu:minimize,maximize,close" >> ${THEME_DIR}/index.theme
@@ -75,7 +77,7 @@ install() {
   cp -ur ${SRC_DIR}/src/gnome-shell/common-assets/{*.svg,dash}                       ${THEME_DIR}/gnome-shell/assets
   cp -ur ${SRC_DIR}/src/gnome-shell/custom-assets/activities${ELSE_LIGHT}.svg        ${THEME_DIR}/gnome-shell/assets/activities.svg
   cp -ur ${SRC_DIR}/src/gnome-shell/custom-assets/activities-active${ELSE_LIGHT}.svg ${THEME_DIR}/gnome-shell/assets/activities-active.svg
-  cp -ur ${SRC_DIR}/src/gnome-shell/gnome-shell${color}${size}.css                   ${THEME_DIR}/gnome-shell/gnome-shell.css
+  cp -ur ${SRC_DIR}/src/gnome-shell/gnome-shell${color}${size}${theme}.css           ${THEME_DIR}/gnome-shell/gnome-shell.css
   # glib-compile-resources \
   #   --sourcedir=${THEME_DIR}/gnome-shell \
   #   --target=${THEME_DIR}/gnome-shell/gnome-shell-theme.gresource \
@@ -83,16 +85,16 @@ install() {
 
   mkdir -p                                                                           ${THEME_DIR}/gtk-2.0
   cp -ur ${SRC_DIR}/src/gtk-2.0/{apps.rc,hacks.rc,main.rc}                           ${THEME_DIR}/gtk-2.0
-  cp -ur ${SRC_DIR}/src/gtk-2.0/assets${ELSE_DARK}                                   ${THEME_DIR}/gtk-2.0/assets
-  cp -ur ${SRC_DIR}/src/gtk-2.0/gtkrc${color}                                        ${THEME_DIR}/gtk-2.0/gtkrc
+  cp -ur ${SRC_DIR}/src/gtk-2.0/assets${ELSE_DARK}${theme}                           ${THEME_DIR}/gtk-2.0/assets
+  cp -ur ${SRC_DIR}/src/gtk-2.0/gtkrc${color}${theme}                                ${THEME_DIR}/gtk-2.0/gtkrc
 
   cp -ur ${SRC_DIR}/src/gtk/assets                                                   ${THEME_DIR}/gtk-assets
 
   mkdir -p                                                                           ${THEME_DIR}/gtk-3.0
   ln -sf ../gtk-assets                                                               ${THEME_DIR}/gtk-3.0/assets
-  cp -ur ${SRC_DIR}/src/gtk/gtk${color}${size}${radius}.css                                   ${THEME_DIR}/gtk-3.0/gtk.css
+  cp -ur ${SRC_DIR}/src/gtk/gtk${color}${size}${radius}${theme}.css                  ${THEME_DIR}/gtk-3.0/gtk.css
   [[ ${color} != '-dark' ]] && \
-  cp -ur ${SRC_DIR}/src/gtk/gtk-dark${size}${radius}.css                                      ${THEME_DIR}/gtk-3.0/gtk-dark.css
+  cp -ur ${SRC_DIR}/src/gtk/gtk-dark${size}${radius}${theme}.css                     ${THEME_DIR}/gtk-3.0/gtk-dark.css
 
   mkdir -p                                                                           ${THEME_DIR}/metacity-1
   cp -ur ${SRC_DIR}/src/metacity-1/assets/*.png                                      ${THEME_DIR}/metacity-1
@@ -109,7 +111,9 @@ install() {
 for color in "${colors[@]:-${COLOR_VARIANTS[@]}}"; do
   for size in "${sizes[@]:-${SIZE_VARIANTS[@]}}"; do
     for radius in "${radius[@]:-${RADIUS_VARIANTS[@]}}"; do
-      install "${dest:-${DEST_DIR}}" "${name:-${THEME_NAME}}" "${color}" "${size}" "${radius}"
+      for theme in "${theme[@]:-${THEME_VARIANTS[@]}}"; do
+        install "${dest:-${DEST_DIR}}" "${name:-${THEME_NAME}}" "${color}" "${size}" "${radius}" "${theme}"
+      done
     done
   done
 done

@@ -67,8 +67,15 @@ $semi_fill_color: gtkalpha(currentColor, $lower_opacity / 2);
 $row_fill_color:  gtkalpha(currentColor, 0.05);
 
 // Misc colors
+
 $primary_color: if($variant == 'light', #7043ea, #7349ff);
-$alt_primary_color:     #8600e8;
+$alt_primary_color: #8600e8;
+
+@if $color=='azul' {
+    $primary_color: #2A71F8;
+    $alt_primary_color: #3b7fff;
+}
+
 $progress_color:        #00CE99;
 $accent_color:          #FFAC00;
 $disabled_accent_color: rgba($accent_color, 0.5);

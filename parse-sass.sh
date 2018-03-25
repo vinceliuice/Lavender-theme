@@ -21,6 +21,11 @@ if [ ! -z "${RADIUS_VARIANTS:-}" ]; then
   IFS=', ' read -r -a _RADIUS_VARIANTS <<< "${RADIUS_VARIANTS:-}"
 fi
 
+_THEME_VARIANTS=('' '-azul')
+if [ ! -z "${THEME_VARIANTS:-}" ]; then
+  IFS=', ' read -r -a _THEME_VARIANTS <<< "${THEME_VARIANTS:-}"
+fi
+
 SASSC_OPT="-M -t expanded"
 
 echo "== Generating the CSS..."
@@ -28,8 +33,17 @@ echo "== Generating the CSS..."
 for color in "${_COLOR_VARIANTS[@]}"; do
   for size in "${_SIZE_VARIANTS[@]}"; do
     for radius in "${_RADIUS_VARIANTS[@]}"; do
-      sassc $SASSC_OPT src/gtk/gtk${color}${size}${radius}.{scss,css}
-      sassc $SASSC_OPT src/gnome-shell/gnome-shell${color}${size}.{scss,css}
+      for theme in "${_THEME_VARIANTS[@]}"; do
+        sassc $SASSC_OPT src/gtk/gtk${color}${size}${radius}${theme}.{scss,css}
+      done
+    done
+  done
+done
+
+for color in "${_COLOR_VARIANTS[@]}"; do
+  for size in "${_SIZE_VARIANTS[@]}"; do
+    for theme in "${_THEME_VARIANTS[@]}"; do
+      sassc $SASSC_OPT src/gnome-shell/gnome-shell${color}${size}${theme}.{scss,css}
     done
   done
 done
