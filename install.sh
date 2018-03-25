@@ -110,8 +110,8 @@ install() {
 
 for color in "${colors[@]:-${COLOR_VARIANTS[@]}}"; do
   for size in "${sizes[@]:-${SIZE_VARIANTS[@]}}"; do
-    for radius in "${radius[@]:-${RADIUS_VARIANTS[@]}}"; do
-      for theme in "${theme[@]:-${THEME_VARIANTS[@]}}"; do
+    for radius in "${radiuss[@]:-${RADIUS_VARIANTS[@]}}"; do
+      for theme in "${themes[@]:-${THEME_VARIANTS[@]}}"; do
         install "${dest:-${DEST_DIR}}" "${name:-${THEME_NAME}}" "${color}" "${size}" "${radius}" "${theme}"
       done
     done
