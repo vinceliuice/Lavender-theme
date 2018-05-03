@@ -72,8 +72,8 @@ $primary_color: if($variant == 'light', #7043ea, #7349ff);
 $alt_primary_color: #8600e8;
 
 @if $color=='azul' {
-    $primary_color: #2A71F8;
-    $alt_primary_color: #3b7fff;
+    $primary_color: #3e81ff;
+    $alt_primary_color: #4c89fd;
 }
 
 $progress_color:        #00CE99;
