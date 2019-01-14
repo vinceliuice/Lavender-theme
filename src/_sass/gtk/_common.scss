@@ -1,3 +1,6 @@
+// Header parthbar button radius
+$square_radius: if($radius == 'circle', $circular_radius, $windows_radius);
+
 * {
   // padding: 0;
   background-clip: padding-box;
@@ -84,6 +87,7 @@ notebook:focus tab,
   }
 }
 
+%view,
 .view {
   @extend row.activatable;
 
@@ -91,8 +95,6 @@ notebook:focus tab,
   color: $fg_color;
 
   &:disabled { color: $disabled_fg_color; }
-
-  &:hover, &:active, &:selected { border-radius: $buttons_radius; }
 
   selection,
   &:selected { @extend %selected_items; }
@@ -108,7 +110,7 @@ textview {
   }
 }
 
-// iconview { @extend .view; }
+iconview { @extend %view; border-radius: $buttons_radius; }
 
 .rubberband,
 rubberband {
@@ -407,13 +409,9 @@ button {
     @include button(normal);
 
     &:hover { @include button(hover); }
-
     &:active { @include button(active); }
-
     &:disabled { @include button(disabled); }
-
     &:checked { @include button(checked); }
-
     &:checked:disabled { @include button(checked-disabled); }
 
     @at-root %flat_button, &.flat {
@@ -421,14 +419,11 @@ button {
         @include button(flat-normal);
 
         &:hover { @include button(flat-hover); }
-
         &:active { @include button(flat-active); }
-
         &:disabled { @include button(flat-disabled); }
       }
 
       &:checked { @include button(flat-checked); }
-
       &:checked:disabled { @include button(flat-checked-disabled); }
     }
 
@@ -450,7 +445,6 @@ button {
 
       label {
         &:first-child { margin-left: 16px - ($medium_size - 24px) / 2; }
-
         &:last-child { margin-right: 16px - ($medium_size - 24px) / 2; }
       }
 
@@ -458,7 +452,6 @@ button {
     }
 
     .linked > & { @extend %linked; }
-
     .linked.vertical > & { @extend %linked_vertical; }
 
     .linked > &.flat,
@@ -466,7 +459,6 @@ button {
       border-radius: $buttons_radius;
 
       &.image-button { @extend %circular_button; }
-
       &.text-button.image-button {
         border-radius: $buttons_radius;
         -gtk-outline-radius: $buttons_radius;
@@ -488,7 +480,6 @@ button {
       color: $inverse_secondary_fg_color;
 
       &:hover, &:active { color: $inverse_fg_color; }
-
       &:disabled { color: $inverse_disabled_secondary_fg_color; }
 
       &:checked {
@@ -508,14 +499,12 @@ button {
     padding: ($large_size - 24px) / 2 ($large_size - 16px) / 2;
 
     &.image-button { padding: ($large_size - 24px) / 2; }
-
     &:disabled { opacity: 0; }
   }
 
   // overlay / OSD style
   @at-root %osd_button,
-  .osd & {
-  }
+  .osd & { }
 
   // Suggested and Destructive Action buttons
   @each $b_type, $b_color in (suggested-action, $suggested_color),
@@ -525,7 +514,6 @@ button {
       color: $inverse_fg_color;
 
       &:disabled { @include button(disabled, $b_color); }
-
       &:checked { background-color: mix($inverse_fg_color, $b_color, percentage($lower_opacity)); }
 
       &.flat {
@@ -533,7 +521,6 @@ button {
         color: $b_color;
 
         &:disabled { @include button(flat-disabled, $b_color); }
-
         &:checked { background-color: rgba($b_color, 0.3); }
       }
 
@@ -791,17 +778,15 @@ spinbutton {
 
     button {
       // margin: $container_padding;
-      border: solid $container_padding transparent;
-
+      border: solid 6px transparent;
       @extend %simple_flat_button;
-
       @extend %small_button;
 
       &.up:dir(ltr),
-      &.down:dir(rtl) { margin-left: -$container_padding / 2; }
+      &.down:dir(rtl) { margin-left: -3px; }
 
       &.up:dir(rtl),
-      &.down:dir(ltr) { margin-right: -$container_padding / 2; }
+      &.down:dir(ltr) { margin-right: -3px; }
     }
   }
 
@@ -1039,6 +1024,24 @@ actionbar { // set bottom border radius
 /***************
  * Header bars *
  ***************/
+
+// special case for headerbar stack-switchers and path-bar
+$asset_radius: if($radius == 'circle', '-circle', '-square');
+$asset_color: if($color == 'azul', '-azul', '');
+
+$header_path_button_border: -gtk-scaled(url("assets/button-checked#{$asset_radius}#{$asset_color}.png"),
+                                        url("assets/button-checked#{$asset_radius}#{$asset_color}@2.png"));
+$header_path_button_border_compact: -gtk-scaled(url("assets/button-checked-compact#{$asset_radius}#{$asset_color}.png"),
+                                                url("assets/button-checked-compact#{$asset_radius}#{$asset_color}@2.png"));
+$stack_switcher_firstbutton_border: -gtk-scaled(url("assets/firstbutton-checked#{$asset_radius}#{$asset_color}.png"),
+                                                url("assets/firstbutton-checked#{$asset_radius}#{$asset_color}@2.png"));
+$stack_switcher_firstbutton_border_compact: -gtk-scaled(url("assets/firstbutton-checked-compact#{$asset_radius}#{$asset_color}.png"),
+                                                        url("assets/firstbutton-checked-compact#{$asset_radius}#{$asset_color}@2.png"));
+$stack_switcher_lastbutton_border: -gtk-scaled(url("assets/lastbutton-checked#{$asset_radius}#{$asset_color}.png"),
+                                               url("assets/lastbutton-checked#{$asset_radius}#{$asset_color}@2.png"));
+$stack_switcher_lastbutton_border_compact: -gtk-scaled(url("assets/lastbutton-checked-compact#{$asset_radius}#{$asset_color}.png"),
+                                                       url("assets/lastbutton-checked-compact#{$asset_radius}#{$asset_color}@2.png"));
+
 %titlebar,
 headerbar {
   transition: background-color $shorter_duration $deceleration_curve, color $longer_duration $deceleration_curve;
@@ -1068,7 +1071,14 @@ headerbar {
     @extend .dim-label;
   }
 
+  entry {
+    background-color: if($variant == 'light', $base_color, lighten($base_color, 5%));
+    &:focus { background-color: if($variant == 'light', lighten($base_color, 3%), lighten($base_color, 8%)); }
+  }
+
+  // Reset headerbar linked rules
   .linked:not(.vertical) > entry:not(.flat) { border-radius: $buttons_radius; }
+  .linked:not(.vertical) > button.popup { border-radius: $circular_radius; }
 
   button:not(.suggested-action):not(.destructive-action) {
     @extend %button_basic.flat;
@@ -1077,7 +1087,6 @@ headerbar {
     color: $titlebar_secondary_fg_color;
 
     &:hover, &:active { color: $titlebar_fg_color; }
-
     &:disabled { color: $titlebar_disabled_secondary_fg_color; }
 
     &:checked {
@@ -1095,12 +1104,10 @@ headerbar {
       color: $titlebar_hint_fg_color;
 
       &:hover, &:active { color: $titlebar_secondary_fg_color; }
-
       &:disabled { color: $titlebar_disabled_secondary_fg_color; }
 
       &:checked {
         color: $inverse_secondary_fg_color;
-
         &:disabled { color: $inverse_disabled_secondary_fg_color; }
       }
     }
@@ -1136,7 +1143,6 @@ headerbar {
       color: $inverse_fg_color;
 
       &:disabled { color: $inverse_disabled_fg_color; }
-
       &:hover { color: $inverse_fg_color; }
 
       &:checked {
@@ -1167,7 +1173,6 @@ headerbar {
       padding-right: 16px;
 
       arrow { -GtkArrow-arrow-scaling: 1; }
-
       .arrow { -gtk-icon-source: -gtk-icontheme('pan-down-symbolic'); }
     }
   }
@@ -1289,13 +1294,18 @@ headerbar {
     .background:not(.csd) & button.titlebutton:active { background-size: 1000% 1000%; }
   }
 
+  &.default-decoration,
+  .csd &.default-decoration,             // needed under wayland, since all gtk3 windows are csd windows
+  &.default-decoration:backdrop,
+  .csd &.default-decoration:backdrop { box-shadow: none; }
+
   .solid-csd & {
     &:dir(rtl), &:dir(ltr) { // specificity bump
-      // margin-left: -2px;
-      // margin-right: -2px;
-      // margin-top: -2px;
-      // border-radius: 0;
-      // box-shadow: inset 0 1px $titlebar_highlight_color;
+      margin-left: -2px;
+      margin-right: -2px;
+      margin-top: -2px;
+      border-radius: 0;
+      box-shadow: inset 0 1px $alt_highlight_color;
     }
   }
 }
@@ -1390,7 +1400,6 @@ headerbar { // headerbar border rounding
 
   @extend %titlebar;
 }
-
 
 /************
  * Pathbars *
@@ -1542,7 +1551,6 @@ treeview.view {
   acceleditor > label { background-color: $primary_color; } // see tests/testaccel to test
 }
 
-
 /*********
  * Menus *
  *********/
@@ -1554,18 +1562,13 @@ menubar,
   background-color: $titlebar_bg_color;
 
   > menuitem {
-    transition: $shorter_transition;
+    transition: none;
     min-height: 20px;
     padding: 4px 8px;
     color: $titlebar_secondary_fg_color;
 
-    menu {
-      border-radius: 0 0 $buttons_radius $buttons_radius;
-
-      menu { //submenu
-        border-radius: $buttons_radius;
-      }
-    }
+    > window.background.popup > decoration,
+    > window.background.popup > menu { border-radius: 0 0 $buttons_radius $buttons_radius; }
 
     &:hover { // Seems like it :hover even with keyboard focus
 //      transition: none;
@@ -1597,7 +1600,7 @@ menu,
   }
 
   menuitem {
-    transition: background-color $shorter_duration $deceleration_curve;
+    transition: none;
     min-height: 20px;
     min-width: 40px;
     padding: 4px 8px;
@@ -1697,18 +1700,19 @@ menuitem {
 /************
  * Popovers *
  ************/
+popover,
 popover.background {
   transition: $shadow_transition;
   padding: 2px;
-  box-shadow: $shadow_2; // TODO: this should really have a highlight
   background-color: rgba($menu_bg_color, 0.96);
 
   &:backdrop { box-shadow: $shadow_1; }
 
   &, .csd & {
-//    border-style: solid;
-//    border-width: 1px;
-//    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.3);
+    // border-style: solid;
+    // border-width: 1px;
+    // border-color: $border_color;
+    box-shadow: $shadow_2; // TODO: this should really have a highlight
     border-radius: $buttons_radius + 1px;
   }
 
@@ -1738,10 +1742,12 @@ popover.background {
     &:checked { @include button(checked); }
   }
 
+  checkbutton.text-button,
+  radiobutton.text-button { outline-style: none; }
+
   &.menu button,
   button.model {
     @extend %simple_flat_button;
-
     min-height: 32px;
     padding: 0 8px;
     border-radius: $buttons_radius;
@@ -1750,7 +1756,6 @@ popover.background {
   }
 
   separator { margin: 4px 0; }
-
   list separator { margin: 0; }
 }
 
@@ -1769,9 +1774,7 @@ notebook {
       > tabs {
         margin-bottom: -1px;
         > tab {
-
           &:hover { box-shadow: inset 0 -2px $track_color; }
-
           &:checked { box-shadow: inset 0 -2px $primary_color; }
         }
       }
@@ -1782,9 +1785,7 @@ notebook {
       > tabs {
         margin-top: -1px;
         > tab {
-
           &:hover { box-shadow: inset 0 2px $track_color; }
-
           &:checked { box-shadow: inset 0 2px $primary_color; }
         }
       }
@@ -1795,9 +1796,7 @@ notebook {
       > tabs {
         margin-right: -1px;
         > tab {
-
           &:hover { box-shadow: inset -2px 0 $track_color; }
-
           &:checked { box-shadow: inset -2px 0 $primary_color; }
         }
       }
@@ -1808,9 +1807,7 @@ notebook {
       > tabs {
         margin-left: -1px;
         > tab {
-
           &:hover { box-shadow: inset 2px 0 $track_color; }
-
           &:checked { box-shadow: inset 2px 0 $primary_color; }
         }
       }
@@ -1892,7 +1889,7 @@ notebook {
       border-color: transparent; //
 
       background-image: radial-gradient(circle farthest-corner at center,
-                                        $primary_color 10%,
+                                        $track_color 10%,
                                         transparent 0%);
       background-repeat: no-repeat;
       background-position: center;
@@ -1938,15 +1935,15 @@ notebook {
         padding: 0;
         margin: 0;
 
-        &:last-child {
-          margin-left: $container_padding;
-          margin-right: $container_padding - 12px;
-        }
-
-        &:first-child {
-          margin-left: $container_padding - 12px;
-          margin-right: $container_padding;
-        }
+        // &:last-child {
+        //   margin-left: $container_padding;
+        //   margin-right: $container_padding - 12px;
+        // }
+        //
+        // &:first-child {
+        //   margin-left: $container_padding - 12px;
+        //   margin-right: $container_padding;
+        // }
       }
     }
 
@@ -2274,7 +2271,6 @@ radio {
     padding: 0;
 
     &:dir(ltr) { margin-right: 8px; }
-
     &:dir(rtl) { margin-left: 8px; }
 
     &:not(:checked):not(:indeterminate):not(:disabled) { color: $secondary_fg_color; }
@@ -2974,7 +2970,7 @@ expander {
  * Calendar *
  ************/
 calendar {
-  padding: 1px;
+  padding: 2px 6px;
   border: 1px solid $border_color;
   color: $fg_color;
 
@@ -3018,6 +3014,24 @@ messagedialog { // Message Dialog styling
     &:backdrop { color: $secondary_fg_color; }
   }
 
+  .dialog-action-area button {
+    padding: 4px 12px;
+    border-top: 1px solid $border_color;
+    border-radius: 0;
+
+    @extend %simple_flat_button;
+
+    &:first-child {
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+    }
+
+    &:last-child {
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
+    }
+  }
+
   &.csd { // rounded bottom border styling for csd version
     &.background {
       // bigger radius for better antialiasing
@@ -3032,9 +3046,15 @@ messagedialog { // Message Dialog styling
 
       @extend %simple_flat_button;
 
-      &:first-child { border-bottom-left-radius: $windows_radius; }
+      &:first-child {
+        border-bottom-left-radius: $windows_radius;
+        border-top-left-radius: 0;
+      }
 
-      &:last-child { border-bottom-right-radius: $windows_radius; }
+      &:last-child {
+        border-bottom-right-radius: $windows_radius;
+        border-top-right-radius: 0;
+      }
     }
   }
 
@@ -3066,14 +3086,14 @@ filechooserbutton:drop(active) {
   &:dir(ltr),
   &.left,
   &.left:dir(rtl) {
-    border-right: 1px solid $border_color;
+    border-right: 1px solid $solid_border_color;
     border-left-style: none;
   }
 
   @at-root %sidebar_right,
   &:dir(rtl),
   &.right {
-    border-left: 1px solid $border_color;
+    border-left: 1px solid $solid_border_color;
     border-right-style: none;
   }
 
@@ -3524,6 +3544,7 @@ decoration {
     margin: 0;
     // padding: 4px;
     border-radius: 0;
+    border: solid 2px $titlebar_bg_color;
     box-shadow: none;
     // box-shadow: inset 0 0 0 4px $titlebar_bg_color;
     background-color: $titlebar_bg_color;
@@ -3536,48 +3557,31 @@ decoration {
 
 %title_buttons_solid {
 
-  button.titlebutton {
-      @extend %circular_button;
-//    &:hover {
-//      @include button(flat-hover);
-//    }
-//
-//    &:active, &:checked {
-//      @include button(flat-active);
-//    }
+  @extend %circular_button;
 
-    &.close, &.maximize, &.minimize, &.restore {
-      margin: 0 3px;
-      padding: 0;
-      min-width: 14px;
-      min-height: 14px;
-      border-radius: 100px;
-      animation: none;
-      box-shadow: none;
+  &.close, &.maximize, &.minimize, &.restore {
+    margin: 0 2px;
+    padding: 0;
+    min-width: 16px;
+    min-height: 16px;
+    animation: none;
+    box-shadow: none;
+    color: transparent;
+    background-color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+  }
 
-//      &, &:hover, &:active, &:checked {
-//        color: transparent;
-//        background-color: transparent;
-//        background-image: none;
-//      }
+  &:backdrop { background-image:none; background-color: $titlebar_divider_color; }
 
-      &:backdrop { opacity: 1; }
-    }
+  // Load png assets for each button, Fix the Chrome window restore button bug
+  @each $k in ('close', 'maximize', 'minimize', 'restore') {
+    @each $l, $m in ('',''), (':backdrop','-backdrop'), (':hover','-hover'), (':active','-active') {
 
-    // Load png assets for each button, Fix the Chrome window restore button bug
-    @each $k in ('close', 'maximize', 'minimize', 'restore') {
-      @each $l, $m in ('',''), (':backdrop','-backdrop'), (':hover','-hover'), (':active','-active') {
-
-        &.#{$k}#{$l} {
-          > image {
-            color: transparent;
-            background-color: transparent;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-image: -gtk-scaled(url('assets/titlebutton-#{$k}#{$m}.png'),
-                                          url('assets/titlebutton-#{$k}#{$m}@2.png'));
-          }
-        }
+      &.#{$k}#{$l} {
+        background-image: -gtk-scaled(url('assets/titlebutton-#{$k}#{$m}.png'),
+                                      url('assets/titlebutton-#{$k}#{$m}@2.png'));
       }
     }
   }
@@ -3587,21 +3591,13 @@ decoration {
     button.titlebutton {
       @each $l, $m in ('',''), (':backdrop','-backdrop'), (':hover','-hover'), (':active','-active') {
       &.maximize#{$l} {
-        > image {
-          color: transparent;
-          background-color: transparent;
-          background-position: center;
-          background-repeat: no-repeat;
-          background-image: -gtk-scaled(url('assets/titlebutton-restore#{$m}.png'),
-                                        url('assets/titlebutton-restore#{$m}@2.png'));
-          }
+        background-image: -gtk-scaled(url('assets/titlebutton-restore#{$m}.png'),
+                                      url('assets/titlebutton-restore#{$m}@2.png'));
         }
       }
     }
   }
 }
-
-%title_buttons_normal { }
 
 headerbar,
 .titlebar {
@@ -3615,7 +3611,8 @@ headerbar,
       // @extend %simple_flat_button;
       @extend %circular_button;
 
-      &.close, &.maximize, &.minimize, &.restore { // -gtk-icon-source:
+      @at-root %windows_button,
+      &.close, &.maximize, &.minimize { // -gtk-icon-source:
         min-width: 12px;
         min-height: 12px;
         padding: 0;
@@ -3639,23 +3636,27 @@ headerbar,
         }
       }
 
+      @at-root %windows_close_button,
       &.close { // Window Close button
         background-color: $accent_color;
-
         &:hover {
+          color: $titlebar_fg_color;
           background-color: rgba($accent_color, 0.85);
         }
-
-        &:active, &:checked {
-          background-color: darken($accent_color, 3%);
-        }
+        &:active, &:checked { background-color: darken($accent_color, 3%); }
       }
-
-      .selection-mode & { }
     }
   }
 }
 
+// solid-csd Window manager buttons
+//.csd headerbar:not(.default-decoration),
+.solid-csd headerbar:not(.default-decoration) {
+  button.titlebutton {
+    &.close, &.maximize, &.minimize { @extend %windows_button; }
+    &.close { @extend %windows_close_button; }
+  }
+}
 
 // catch all extend :)
 

@@ -40,6 +40,14 @@ $inverse_disabled_secondary_fg_color: rgba($white, 0.3);
 $inverse_track_color:                 rgba($white, 0.3);
 $inverse_divider_color:               rgba($white, 0.12);
 
+$panel_fg_color:                      if($titlebar == 'light', rgba($black, 0.75), rgba($white, 0.8));
+$panel_secondary_fg_color:            if($titlebar == 'light', rgba($black, 0.62), rgba($white, 0.68));
+$panel_hint_fg_color:                 if($titlebar == 'light', rgba($black, 0.38), rgba($white, 0.5));
+$panel_disabled_fg_color:             if($titlebar == 'light', rgba($black, 0.38), rgba($white, 0.5));
+$panel_disabled_secondary_fg_color:   if($titlebar == 'light', rgba($black, 0.26), rgba($white, 0.3));
+$panel_track_color:                   if($titlebar == 'light', rgba($black, 0.26), rgba($white, 0.3));
+$panel_divider_color:                 if($titlebar == 'light', rgba($black, 0.12), rgba($white, 0.12));
+
 // Background colors
 $bg_color:         if($variant == 'light', $grey_100, fade($blue_grey_700));
 $base_color:       if($variant == 'light', darken($white, 1%),    fade($blue_grey_600));
@@ -80,7 +88,6 @@ $progress_color:        #00CE99;
 $accent_color:          #FFAC00;
 $disabled_accent_color: rgba($accent_color, 0.5);
 
-
 $link_color:         $primary_color;
 $visited_link_color: $purple_A200;
 
@@ -97,11 +104,13 @@ $warning_bg_color:  $orange_400;
 $error_bg_color:    $red_400;
 
 $border_color:             if($variant == 'light', rgba($black, 0.08), rgba($white, 0.08));
+$solid_border_color:       if($variant =='light', darken($bg_color, 8%), lighten($bg_color, 8%));
 $alt_border_color:         rgba($black, 0.2); // for non-native GTK+ apps (e.g. Firefox and Chrome)
 $highlight_color:          if($variant == 'light', rgba($white, 0.4),  rgba($white, 0.1));
 $titlebar_highlight_color: if($titlebar == 'dark', rgba($white, 0.1),  rgba($white, 0.4));
 $alt_highlight_color:      rgba($white, 0.2); // for selection-mode headerbar which colored with $primary_color
 $titlebar_indicator_color: if($titlebar == 'dark', currentColor, $primary_color);
+$indicator_color:          if($titlebar == 'dark', $primary_color, $primary_color);
 
 // for Electron/Atom menu which cannot use translucent colors
 $opaque_fg_color:           if($variant == 'light', $grey_900, $white);
