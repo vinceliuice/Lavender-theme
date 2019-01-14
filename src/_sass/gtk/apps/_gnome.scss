@@ -7,15 +7,15 @@
 // https://gitlab.gnome.org/GNOME/nautilus/blob/master/src/resources/css/nautilus.css
 
 %nautilus_bg_img {
-  background-image: -gtk-scaled(url("assets/background-img-bottom#{$asset_suffix}.png"),
-                                url("assets/background-img-bottom#{$asset_suffix}@2.png"));
+  background-image: -gtk-scaled(url("assets/background-img-bottom#{$asset_suffix}#{$asset_color}.png"),
+                                url("assets/background-img-bottom#{$asset_suffix}#{$asset_color}@2.png"));
   background-repeat: no-repeat;
   background-position: top right;
 }
 
 %headerbar_bg_img {
-  background-image: -gtk-scaled(url("assets/background-img-top#{$asset_suffix_light}.png"),
-                                url("assets/background-img-top#{$asset_suffix_light}@2.png"));
+  background-image: -gtk-scaled(url("assets/background-img-top#{$asset_suffix_light}#{$asset_color}.png"),
+                                url("assets/background-img-top#{$asset_suffix_light}#{$asset_color}@2.png"));
   background-repeat: no-repeat;
   background-position: bottom right;
 }
@@ -27,7 +27,6 @@
 %headerbar_none_img {
   background-image: none;
 }
-
 
 %pathbar_box_button {
   margin: 0;

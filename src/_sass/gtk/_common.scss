@@ -1,6 +1,10 @@
 // Header parthbar button radius
 $square_radius: if($radius == 'circle', $circular_radius, $windows_radius);
 
+// special case for headerbar stack-switchers and path-bar
+$asset_radius: if($radius == 'circle', '-circle', '-square');
+$asset_color: if($color == 'azul', '-azul', '');
+
 * {
   // padding: 0;
   background-clip: padding-box;
@@ -1024,10 +1028,6 @@ actionbar { // set bottom border radius
 /***************
  * Header bars *
  ***************/
-
-// special case for headerbar stack-switchers and path-bar
-$asset_radius: if($radius == 'circle', '-circle', '-square');
-$asset_color: if($color == 'azul', '-azul', '');
 
 $header_path_button_border: -gtk-scaled(url("assets/button-checked#{$asset_radius}#{$asset_color}.png"),
                                         url("assets/button-checked#{$asset_radius}#{$asset_color}@2.png"));
